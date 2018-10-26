@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,16 +45,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IServiceWorker.cs" />
+    <Compile Include="LuckyNumberServiceWorker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeatherServiceWorker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ServiceAbstractions\ServiceAbstractions.csproj">
-      <Project>{5688a955-6c52-4d38-ad97-c22a6a7546d8}</Project>
-      <Name>ServiceAbstractions</Name>
+    <ProjectReference Include="..\LuckyNumberService\LuckyNumberService.csproj">
+      <Project>{54ed4317-5ece-4fac-9c8d-97d4d1135001}</Project>
+      <Name>LuckyNumberService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeatherService\WeatherService.csproj">
+      <Project>{6827cb9f-82bc-4068-8dd8-e173de666f36}</Project>
+      <Name>WeatherService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

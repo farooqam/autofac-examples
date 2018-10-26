@@ -7,8 +7,8 @@
     <ProjectGuid>{6827CB9F-82BC-4068-8DD8-E173DE666F36}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WeatherService</RootNamespace>
-    <AssemblyName>WeatherService</AssemblyName>
+    <RootNamespace>AutofacExamples.Services</RootNamespace>
+    <AssemblyName>AutofacExamples.Services.WeatherService</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,14 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="WeatherService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ServiceAbstractions\ServiceAbstractions.csproj">
-      <Project>{5688a955-6c52-4d38-ad97-c22a6a7546d8}</Project>
-      <Name>ServiceAbstractions</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
