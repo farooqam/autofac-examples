@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using AutofacExamples.Services;
 using Newtonsoft.Json;
 
@@ -18,7 +19,14 @@ namespace ServiceHost
 
             if (mode == "w")
             {
-                WeatherServiceWorker worker = new WeatherServiceWorker(new WeatherService())
+                WeatherServiceWorkerSettings settings = new WeatherServiceWorkerSettings
+                {
+                    City = ConfigurationManager.AppSettings["city"]
+                };
+
+                IWeatherService weatherService = new WeatherService();
+                
+                IServiceWorker worker = new WeatherServiceWorker(weatherService, settings)
                 {
                     OnData = (data) => Console.WriteLine(JsonConvert.SerializeObject(data))
                 };
@@ -27,7 +35,15 @@ namespace ServiceHost
             }
             else if (mode == "n")
             {
-                LuckyNumberServiceWorker worker = new LuckyNumberServiceWorker(new LuckyNumberService())
+                LuckyNumberServiceSettings settings = new LuckyNumberServiceSettings
+                {
+                    Min = Convert.ToInt32(ConfigurationManager.AppSettings["min"]),
+                    Max = Convert.ToInt32(ConfigurationManager.AppSettings["max"])
+                };
+
+                ILuckyNumberService luckyNumberService = new LuckyNumberService(settings);
+
+                IServiceWorker worker = new LuckyNumberServiceWorker(luckyNumberService)
                 {
                     OnData = Console.WriteLine
                 };
