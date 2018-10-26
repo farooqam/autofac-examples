@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
+using Autofac;
+using Autofac.Configuration;
+using AutofacExamples.ServiceHost.Workers;
 using AutofacExamples.Services;
 using Newtonsoft.Json;
 
@@ -9,47 +14,26 @@ namespace ServiceHost
     {
         static void Main(string[] args)
         {
-            if (args.Length != 1)
+            ContainerBuilder builder = new ContainerBuilder();
+            ConfigurationSettingsReader reader = new ConfigurationSettingsReader();
+
+            builder.RegisterModule(reader);
+
+            IContainer container = builder.Build();
+            IEnumerable<IServiceWorker> workers = container.Resolve<IEnumerable<IServiceWorker>>().ToList();
+
+            if (!workers.Any())
             {
-                Console.WriteLine("USAGE: ServiceHost [mode = W | N");
+                Console.WriteLine("No worker modules are registered so there is nothing to do.");
                 return;
             }
 
-            string mode = args[0].ToLowerInvariant();
-
-            if (mode == "w")
+            foreach (var worker in workers)
             {
-                WeatherServiceWorkerSettings settings = new WeatherServiceWorkerSettings
-                {
-                    City = ConfigurationManager.AppSettings["city"]
-                };
-
-                IWeatherService weatherService = new WeatherService();
-                
-                IServiceWorker worker = new WeatherServiceWorker(weatherService, settings)
-                {
-                    OnData = (data) => Console.WriteLine(JsonConvert.SerializeObject(data))
-                };
-
+                worker.OnData = (data) => Console.WriteLine(JsonConvert.SerializeObject(data));
                 worker.Run();
             }
-            else if (mode == "n")
-            {
-                LuckyNumberServiceSettings settings = new LuckyNumberServiceSettings
-                {
-                    Min = Convert.ToInt32(ConfigurationManager.AppSettings["min"]),
-                    Max = Convert.ToInt32(ConfigurationManager.AppSettings["max"])
-                };
 
-                ILuckyNumberService luckyNumberService = new LuckyNumberService(settings);
-
-                IServiceWorker worker = new LuckyNumberServiceWorker(luckyNumberService)
-                {
-                    OnData = Console.WriteLine
-                };
-
-                worker.Run();
-            }
         }
     }
 }

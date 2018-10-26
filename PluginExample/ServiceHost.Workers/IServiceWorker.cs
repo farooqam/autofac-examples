@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ServiceHost
+namespace AutofacExamples.ServiceHost.Workers
 {
     public interface IServiceWorker
     {

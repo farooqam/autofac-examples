@@ -1,7 +1,7 @@
 ﻿using System;
 using AutofacExamples.Services;
 
-namespace ServiceHost
+namespace AutofacExamples.ServiceHost.Workers
 {
     public class LuckyNumberServiceWorker : IServiceWorker
     {
