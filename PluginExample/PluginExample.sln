@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost.AutofacModules"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost.Workers", "ServiceHost.Workers\ServiceHost.Workers.csproj", "{D3C140A0-7132-4EAA-9550-27245977CC12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHost.AutofacModules.Tests", "ServiceHost.AutofacModules.Tests\ServiceHost.AutofacModules.Tests.csproj", "{FBFB7F19-4E91-40A3-96B9-EBEC27004CF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D3C140A0-7132-4EAA-9550-27245977CC12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3C140A0-7132-4EAA-9550-27245977CC12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3C140A0-7132-4EAA-9550-27245977CC12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBFB7F19-4E91-40A3-96B9-EBEC27004CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBFB7F19-4E91-40A3-96B9-EBEC27004CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBFB7F19-4E91-40A3-96B9-EBEC27004CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBFB7F19-4E91-40A3-96B9-EBEC27004CF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
